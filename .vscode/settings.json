@@ -1,0 +1,8 @@
+{
+  "python.pythonPath": "/Users/luna/.pyenv/versions/3.10.5/envs/flaskproject/bin/python3",
+  "python.languageServer": "Pylance",
+  "python.autoComplete.addBrackets": true,
+  "python.analysis.completeFunctionParens": true,
+  "python.linting.enabled": false,
+  "python.linting.pylintEnabled": true
+}
