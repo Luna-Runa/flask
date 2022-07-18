@@ -1,6 +1,6 @@
 from flask import request
 from flask_restx import Resource, Namespace
-from server import api, db
+from server import db
 from ..models import Users
 
 auth = Namespace('', description='인증 API')

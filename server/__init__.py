@@ -7,15 +7,15 @@ from flask import Blueprint
 import config
 
 api = Api(
-    version='1.0',
-    title='flask 과제 API 문서',
-    description='Swagger 문서',
-    terms_uer='/api-docs'
+        version='1.0',
+        title='flask 과제 API 문서',
+        description='Swagger 문서',
 )
-
 #db 커넥트
 db = SQLAlchemy()
 migrate = Migrate()
+
+blueprint = Blueprint('api', __name__, url_prefix='/')
 
 def create_app():
     app = Flask(__name__)
@@ -30,7 +30,6 @@ def create_app():
     #Router 블루프린트, Swagger 세팅
     from .routes.mainRouter import main
     from .routes.authRouter import auth
-    blueprint = Blueprint('api', __name__, url_prefix='/api-docs')
     api.init_app(app)
     api.add_namespace(main)
     api.add_namespace(auth)

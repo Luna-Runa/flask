@@ -1,13 +1,16 @@
-from flask import request
 from flask_restx import Resource, Namespace
-from server import api, db
 from ..models import Users
+from server import blueprint
 
 main = Namespace('', description='인증 API')
 
+@blueprint.route('/home')
+def helloo():
+    return "hello"
+
 @main.route('/')
 class mp(Resource) :
-    def get():
+    def get(self):
         return {"message" : "hello?"}
 
 @main.route('/contents')
