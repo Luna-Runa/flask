@@ -7,9 +7,10 @@ from flask import Blueprint
 import config
 
 api = Api(
-        version='1.0',
-        title='flask 과제 API 문서',
-        description='Swagger 문서',
+    doc='/api-docs',
+    version='1.0',
+    title='flask 과제 API 문서',
+    description='Swagger 문서',
 )
 #db 커넥트
 db = SQLAlchemy()
@@ -28,11 +29,9 @@ def create_app():
     #db.create_all()
 
     #Router 블루프린트, Swagger 세팅
-    from .routes.mainRouter import main
-    from .routes.authRouter import auth
+    from .routes.Router import main
     api.init_app(app)
     api.add_namespace(main)
-    api.add_namespace(auth)
     app.register_blueprint(blueprint)
 
     if __name__ == '__main__':
