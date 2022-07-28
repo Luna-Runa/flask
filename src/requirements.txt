@@ -1,0 +1,14 @@
+Flask==2.1.2
+Flask-SQLAlchemy==2.5.1
+Flask-Migrate==3.1.0
+Flask-Login==0.6.2
+flask_restx==0.5.1
+alembic==1.8.1
+Jinja2==3.1.2
+psycopg2==2.9.3
+#psycopg2-binary==2.9.3
+python-dotenv==0.20
+werkzeug==2.1.2
+bcrypt==3.2.2
+PyJWT==2.4.0
+flask-jwt-extended==4.4.3

@@ -1,0 +1,12 @@
+version: "3.8"
+services:
+  flask:
+    container_name: flask
+    env_file:
+      - ./docker.env
+    build:
+      context: ./src
+    ports:
+      - 4000:4000
+    volumes:
+      - ./:/app

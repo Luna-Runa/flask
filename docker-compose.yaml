@@ -1,0 +1,43 @@
+version: "3.8"
+services:
+  postgres:
+    container_name: postgres
+    restart: unless-stopped
+    image: "postgres:14.3"
+    volumes:
+      - ./data/postgresql/data:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=test
+      - TZ=Asia/Seoul
+
+  pgadmin:
+    container_name: pgadmin
+    restart: unless-stopped
+    image: dpage/pgadmin4
+    volumes:
+      - ./data/postgresql/pgadmin:/var/lib/pgadmin
+    ports:
+      - 8088:80
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=test@test.com
+      - PGADMIN_DEFAULT_PASSWORD=test
+      - TZ=Asia/Seoul
+    depends_on:
+      - postgres
+
+  flask:
+    container_name: flask
+    restart: unless-stopped
+    env_file:
+      - ./docker.env
+    build:
+      context: ./src
+    ports:
+      - 4000:4000
+    volumes:
+      - ./:/app
+    depends_on:
+      - postgres

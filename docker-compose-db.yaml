@@ -1,0 +1,28 @@
+version: "3.8"
+services:
+  postgres:
+    container_name: postgres
+    image: "postgres:14.3"
+    volumes:
+      - postgres:/var/lib/postgres
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=test
+      - TZ=Asia/Seoul
+
+  pgadmin:
+    container_name: pgadmin
+    image: dpage/pgadmin4
+    ports:
+      - 8088:80
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=test@test.com
+      - PGADMIN_DEFAULT_PASSWORD=test
+      - TZ=Asia/Seoul
+    depends_on:
+      - postgres
+
+volumes:
+  postgres:
